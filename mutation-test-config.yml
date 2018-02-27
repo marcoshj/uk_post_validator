@@ -1,0 +1,12 @@
+module: uk_post_validator
+
+baseline: 10
+
+exclude-modules:
+
+test-runner:
+  name: pytest
+  args: -v
+
+execution-engine:
+  name: local
