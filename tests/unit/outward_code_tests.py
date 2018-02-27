@@ -226,7 +226,7 @@ class TestOutwardCodeObject:
             expected_district,
             complete_outward_code
     ):
-        outward_code: OutwardCode = OutwardCode.create_from_complete_outward_code(
+        outward_code = OutwardCode.create_from_complete_outward_code(
             complete_outward_code
         )
         assert expected_area == outward_code.area

@@ -4,13 +4,13 @@ from uk_post_validator import exceptions
 
 AREA_REGEX = '[A-Za-z]{1,2}'
 DISTRICT_REGEX = '([1-9][0-9]|[0-9][A-Za-z]{0,1})'
-OUTWARD_REGEX = f'{AREA_REGEX}{DISTRICT_REGEX}'
+OUTWARD_REGEX = ''.join([AREA_REGEX, DISTRICT_REGEX])
 
 
 def validate_area(area: str) -> bool:
     """Validates that area has a correct format"""
     area_pattern_is_correct = re.fullmatch(
-        f'^{AREA_REGEX}$',
+        '^{}$'.format(AREA_REGEX),
         str(area)
     )
 
@@ -25,7 +25,7 @@ def validate_area(area: str) -> bool:
 def validate_district(district: str) -> bool:
     """Validates that district has a correct format"""
     district_pattern_is_correct = re.fullmatch(
-        f'^{DISTRICT_REGEX}$',
+        '^{}$'.format(DISTRICT_REGEX),
         str(district)
     )
 
@@ -41,7 +41,7 @@ def validate_district(district: str) -> bool:
 def validate_outward_code(outward_code: str) -> bool:
     """Validates that full outward code has correct format."""
     outward_pattern_is_correct = re.fullmatch(
-        f'^{OUTWARD_REGEX}$',
+        '^{}$'.format(OUTWARD_REGEX),
         outward_code
     )
 

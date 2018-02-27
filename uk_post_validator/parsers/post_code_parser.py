@@ -10,13 +10,13 @@ def divide_post_code_in_components(post_code: str) -> Tuple[str, str, int, str]:
     outward and inward components (area, district, sector and unit).
     """
     try:
-        post_code_formatted: str = post_code.strip()
+        post_code_formatted = post_code.strip()
 
-        outward_components: Tuple = outward_parser.divide_outward_code_in_components(
+        outward_components = outward_parser.divide_outward_code_in_components(
             post_code_formatted[:-3].strip()
         )
 
-        inward_components: Tuple = inward_parser.divide_inward_code_in_components(
+        inward_components = inward_parser.divide_inward_code_in_components(
             post_code_formatted[-3:]
         )
     except AttributeError:

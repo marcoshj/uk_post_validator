@@ -65,7 +65,10 @@ class PostCode:
         Returns string value of district for postcode instance
         (full code, which is outward code).
         """
-        return f'{self.area}{self.district_code}'
+        return '{area}{district_code}'.format(
+            area=self.area,
+            district_code=self.district_code
+        )
 
     @property
     def sector(self) -> str:
@@ -73,7 +76,10 @@ class PostCode:
         Returns string value of sector for postcode instance
         (full code).
         """
-        return f'{self.district} {self.sector_code}'
+        return '{district} {sector_code}'.format(
+            district=self.district,
+            sector_code=self.sector_code
+        )
 
     @property
     def unit(self) -> str:
@@ -81,7 +87,10 @@ class PostCode:
         Returns string value of unit for postcode instance
         (full code, outward + inward code).
         """
-        return f'{self.sector}{self.unit_code}'
+        return '{sector}{unit_code}'.format(
+            sector=self.sector,
+            unit_code=self.unit_code
+        )
 
     @property
     def full_code(self) -> str:

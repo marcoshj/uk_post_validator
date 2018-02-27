@@ -32,7 +32,10 @@ class InwardCode:
     @property
     def code(self) -> str:
         """Returns the full inward code in a string"""
-        return f'{self.sector}{self.unit}'
+        return '{sector}{unit}'.format(
+            sector=self.sector,
+            unit=self.unit
+        )
 
     def __repr__(self) -> str:
         return self.code

@@ -29,7 +29,7 @@ FORBIDDEN_UNIT_LETTERS = 'CIKMOV'
 def validate_post_code_format(full_code: str) -> bool:
     """Validates that full post code has correct format."""
     code_to_validate = full_code.strip().upper()
-    post_code_is_correct = re.fullmatch(f'^{POST_CODE_REGEX}$', code_to_validate)
+    post_code_is_correct = re.fullmatch('^{}$'.format(POST_CODE_REGEX), code_to_validate)
 
     if not post_code_is_correct:
         raise exceptions.InvalidPostCodeFormatError('Post code has not a correct format')
@@ -136,8 +136,9 @@ def _validate_unit(unit: str) -> bool:
     unit = unit.strip().upper()
     if any(letter in unit for letter in FORBIDDEN_UNIT_LETTERS):
         raise exceptions.UnitCharactersNotAllowedError(
-            f'Unit doesn\'t allow the following characters:'
-            f' {", ".join(FORBIDDEN_UNIT_LETTERS)}.'
+            'Unit doesn\'t allow the following characters: {}'.format(
+                ", ".join(FORBIDDEN_UNIT_LETTERS)
+            )
         )
 
     return True
@@ -153,5 +154,12 @@ def _compose_full_post_code(
     Composes a full post code string with all its components with and
     a space in the middle. All strings are uppercase
     """
-    return (f'{area.strip().upper()}{district.strip().upper()}'
-            f' {sector}{unit.strip().upper()}')
+    outward_code = '{area}{district}'.format(
+        area=area.strip().upper(),
+        district=district.strip().upper()
+    )
+    inward_code = '{sector}{unit}'.format(
+        sector=sector,
+        unit=unit.strip().upper()
+    )
+    return ' '.join([outward_code, inward_code])

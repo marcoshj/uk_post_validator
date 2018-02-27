@@ -1,13 +1,13 @@
 # UK POSTCODE VALIDATOR
 A library that supports validating and formatting post codes for UK.
 
-Supports Python 3.6+.
+Supports only Python 3
 
 ## Development
 Is highly recommended using a virtual environment to develop
 on this project.
 
-Python 3.6 is required.
+Python 3 is required.
 
 To install development dependencies, run:
 ```

@@ -35,7 +35,10 @@ class OutwardCode:
     @property
     def code(self) -> str:
         """Returns the full outward code in a string"""
-        return f'{self.area}{self.district}'
+        return '{area}{district}'.format(
+            area=self.area,
+            district=self.district
+        )
 
     def __repr__(self) -> str:
         return self.code
